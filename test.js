@@ -27,4 +27,3 @@ function calculate() {
     document.getElementById("result").textContent =
         "Result: " + result;
 }
-alert("sum");
