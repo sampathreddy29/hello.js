@@ -1,29 +1,47 @@
-function summn(f,m) {
-    let sum = 0;
-    for (let i of m) {
-        for (let j of f) {
-            if (i % j == 0) {
-                sum += i;
-                break;
-            }
-        }
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sum of multiples</title>
+</head>
+<body>
+
+<h3>Enter values</h3>
+
+<label>Factors (comma separated):</label><br>
+<input type="text" id="factors" placeholder="2,3"><br><br>
+
+<label>Multiples (comma separated):</label><br>
+<input type="text" id="multiples" placeholder="4,5,6,7,8,9"><br><br>
+
+<button onclick="calculate()">Calculate</button>
+
+<script>
+function summ(f, m) {
+  let sum = 0;
+
+  for (let i of m) {
+    for (let j of f) {
+      if (i % j === 0) {
+        sum += i;
+        break;
+      }
     }
-    return sum
+  }
+  return sum;
 }
-console.log(summn([2,3], [4, 5, 6, 7, 8, 9]))
+
 function calculate() {
-    // Get input values
-    const factorsInput = document.getElementById("factors").value;
-    const multiplesInput = document.getElementById("multiples").value;
+  const factorsInput = document.getElementById("factors").value;
+  const multiplesInput = document.getElementById("multiples").value;
 
-    // Convert string → number array
-    const factors = factorsInput.split(",").map(Number);
-    const multiples = multiplesInput.split(",").map(Number);
+  const f = factorsInput.split(',').map(Number);
+  const m = multiplesInput.split(',').map(Number);
 
-    // Calculate sum
-    const result = summn(factors, multiples);
+  let result = summ(f, m);
 
-    // Show output
-    document.getElementById("result").textContent =
-        "Result: " + result;
+  alert("Result is: " + result);
 }
+</script>
+
+</body>
+</html>
